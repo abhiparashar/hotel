@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Registerform from "../components/Registerform";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -6,41 +7,31 @@ const Register = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    alert("abhishek");
+    console.table({ name, email, password });
   };
 
-  const registerform = () => (
-    <form className="container mb-3" onSubmit={submitHandler}>
-      <div className="form-group">
-        <label className="form-label">Name</label>
-        <input
-          className="form-control"
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <label className="form-label">Name</label>
-        <input
-          className="form-control"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label className="form-label">Name</label>
-        <input
-          className="form-control"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+  return (
+    <>
+    <div className="container-fluid bg-secondary p-5 text-center">
+    Register here
+    </div>
+    <div className="container">
+      <div className="row">
+      <div className="col-md-6 offset-md-3">
+        <Registerform
+          name={name}
+          email={email}
+          password={password}
+          setName={setName}
+          setEmail={setEmail}
+          setName={setEmail}
+          setPassword={setPassword}
+          submitHandler={submitHandler}
         />
       </div>
-      <button type="submit" className="mt-3">Submit</button>
-    </form>
-  );
-  return (
-    <div className="row">
-      <div className="col md-6">{registerform()}</div>
     </div>
+    </div>
+    </>
   );
 };
 export default Register;
